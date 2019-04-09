@@ -15,3 +15,8 @@ def make_non_numeric(df):
         df[col] = df[col].astype(str)
     return df
 
+def prep_data(df):
+    df = single_unit(df)
+    df = make_non_numeric(df)
+    return df
+    
