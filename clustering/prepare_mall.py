@@ -12,7 +12,7 @@ def is_outlier(df):
     return df
 
 def encode_mall(df):
-    for col in ('gender', 'annual_income', 'spending_score'):
+    for col in ('gender'):
         encoder=LabelEncoder()
         encoder.fit(df[col])
         new_col = col + '_encoded'
@@ -24,3 +24,19 @@ def prepare_mall(df):
     df = is_outlier(df)
     df = encode_mall(df)
     return df
+
+def summarize_df(df):
+    print("\nRows & Columns:\n")
+    print(df.shape)
+    print("\nColumn Info:\n")
+    print(df.info())
+    print("\nFirst 5 rows:\n")
+    print(df.head())
+    print("\nLast 5 rows:\n")
+    print(df.tail())
+    print("\nMissing Values:\n")
+    missing_vals = df.columns[df.isnull().any()]
+    print(df.isnull().sum())
+    print("\nSummary Stats:\n")
+    print(df.describe())
+    
